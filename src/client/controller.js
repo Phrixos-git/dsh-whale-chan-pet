@@ -414,12 +414,15 @@ export function createPetController(root, options = {}) {
     if (state.blinking && state.mode !== 'walk' && state.mode !== 'think' && state.mode !== 'sleep') {
       key = 'blink';
       source = SPRITES.blink || SPRITES.sleep;
+    } else if (state.mode === 'sleep') {
+      key = state.sleepReason === 'nap' ? 'nap' : 'sleep';
+      source = SPRITES[key] || SPRITES.sleep;
     } else if (state.mode === 'walk' && Array.isArray(SPRITES.walk) && SPRITES.walk.length > 0) {
       const index = state.walkFrame % SPRITES.walk.length;
       key = `walk:${index}`;
       source = SPRITES.walk[index];
     } else {
-      key = state.mode === 'think' ? 'think' : state.mode === 'sleep' ? 'sleep' : 'idle';
+      key = ['think', 'work'].includes(state.mode) ? state.mode : 'idle';
       source = SPRITES[key];
     }
     if (state.spriteKey === key) return;
@@ -906,7 +909,8 @@ export function createPetController(root, options = {}) {
     forceMode: (mode) => {
       const now = Date.now();
       if (mode === 'think') enterThink(now);
-      else if (mode === 'sleep') setMode('sleep', now, { reason: 'nap' });
+      else if (mode === 'sleep') setMode('sleep', now, { reason: 'preview' });
+      else if (mode === 'nap') setMode('sleep', now, { reason: 'nap' });
       else if (mode === 'work') setMode('work', now);
       else if (mode === 'walk') startWalk(now);
       else setMode('idle', now);

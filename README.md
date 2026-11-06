@@ -9,16 +9,18 @@ DeepSeek Harness（DSH）の Web GUI に住む、小さな Whale-chan のデス�
 - クリックで反応、ドラッグで好きな場所に移動
 - ホバー時の「×」で非表示、右下の「🐋」で呼び出し
 
-![idle / think / sleep](art/sprites/states-dark.png)
+![idle / think / nap / sleep / work](art/sprites/states-dark.png)
 
 見た目は、ComfyUI + Animagine XL 4.0で生成したスプライトです。
 
 - `idle`: 通常の立ち姿
-- `walk`: 横向きの4フレーム歩行。正面と同じ長いウェーブ髪・アホ毛・白フリルヘッドドレス。歩く方向に合わせて左右反転
-- `think`: 手を顎に当てたポーズ
-- `sleep`: 正面スプライトの閉じ目差分。眉は柔らかめ
-- `blink`: `sleep` と同じ閉じ目差分を一瞬だけ表示
-- `work` / `happy`: `idle` を使い、揺れ・ハートで表現
+- `walk`: 4フレームの揺れ歩行（正面寄り。側面フレームは今後の調整）
+- `think`: idleポーズ＋「？」マーク
+- `sleep`: 長考後は横たわり。睫毛はスパイクのない滑らかなライン
+- `nap`: 短い昼寝は座り込み。コントローラーを持ったままうたた寝
+- `blink`: 立ち姿の閉じ目差分を一瞬だけ表示
+- `work`: 座ってゲームをするポーズ（コントローラー持ち）
+- `happy`: `idle` を使い、ハートで表現
 
 モデルの推論本文は読みません。見ているのは「reasoning が流れているか」というイベント種別と経過時間だけです。外部への送信もありません。
 
@@ -27,12 +29,12 @@ DeepSeek Harness（DSH）の Web GUI に住む、小さな Whale-chan のデス�
 | 状態 | トリガー | 見た目 |
 |---|---|---|
 | `idle` | セッションが動いていない | ときどき歩く、ときどき昼寝 |
-| `walk` | 散歩のタイミング | 横向きの4フレーム歩行。長いウェーブ髪で進行方向を向く |
-| `work` | セッションが実行中（Thinking 以外） | その場で応援、ときどき「…」 |
-| `think` | reasoning の delta を受信 | 首をかしげて「？」、手を顎に |
-| `sleep`（長考） | Thinking が 20 秒以上続く | 閉じ目差分で Zzz。Thinking が終わるまで寝たまま |
-| `sleep`（昼寝） | アイドルが 75 秒以上続いたとき、35% の確率 | 18〜40 秒で起きる |
-| `blink` | idle / work / happy 中、3.5〜8秒おき | 140msだけ閉じ目差分に切り替わる |
+| `walk` | 散歩のタイミング | 4フレームの揺れ歩行。進行方向に左右反転 |
+| `work` | セッションが実行中（Thinking 以外） | 座ってゲーム。コントローラーを持って応援 |
+| `think` | reasoning の delta を受信 | 「？」マークと吹き出しで考え中 |
+| `sleep`（長考） | Thinking が 20 秒以上続く | 横たわり＋滑らかな閉じ目で Zzz。Thinking が終わるまで寝たまま |
+| `sleep`（昼寝） | アイドルが 75 秒以上続いたとき、35% の確率 | 座り込み＋滑らかな閉じ目で Zzz。18〜40 秒で起きる |
+| `blink` | idle / work / happy 中、3.5〜8秒おき | 140msだけ立ち閉じ目に切り替わる |
 | `happy` | クリック | ハートとセリフ |
 
 初期値は、歩行間隔 9〜22 秒、歩行速度 約70 px/s、サイズ 210px、長考で寝るまで 20 秒です。これらはペットの **⚙** から開く設定パネルで変更できます。
@@ -172,7 +174,7 @@ npm run preview
 # http://127.0.0.1:8790/preview/
 ```
 
-`?state=think`、`?state=sleep`、`?state=work`、`?state=idle`、`?state=blink` で初期状態を指定できます。画面上部のボタンで状態を切り替えられます。
+`?state=think`、`?state=sleep`、`?state=nap`、`?state=work`、`?state=idle`、`?state=blink` で初期状態を指定できます。画面上部のボタンで状態を切り替えられます。
 
 ## スプライトの生成元（ComfyUI）
 
@@ -184,9 +186,9 @@ npm run preview
 - 背景除去: BiRefNet
   - `/path/to/models/background_removal/BiRefNet.safetensors`
 - 生成スクリプト: ローカル管理（このリポジトリには含めていません）
-- スプライト: `art/sprites/idle.webp`、`walk-1.webp`、`walk-2.webp`、`walk-3.webp`、`walk-4.webp`、`think.webp`、`sleep.webp`（512×512 / 透過WebP）
+- スプライト: `art/sprites/idle.webp`、`walk-1.webp`、`walk-2.webp`、`walk-3.webp`、`walk-4.webp`、`think.webp`、`sleep.webp`、`nap.webp`、`blink.webp`、`work.webp`（512×512 / 透過WebP）
 - 歩行フレームは、正面スプライトと同じ長いウェーブ髪・アホ毛・白フリルヘッドドレスに統一
-- `sleep.webp` は正面スプライトの閉じ目差分。`SPRITES.blink` は同じ画像を共用し、まばたきに使います
+- `sleep.webp` は横たわり、`nap.webp` は座り込み、`blink.webp` は立ち姿の閉じ目です。いずれも睫毛は滑らかなラインです
 - 歩行フレームは横向き（右向き）で生成し、左へ歩くときはコントローラが左右反転します
 
 ComfyUIはQwen3.8 27BとVRAMを共有するため、同時に動かすとVRAMが足りなくなります。生成するときはQwenを一時停止し、終わったら再起動してください。Qwenの再起動スクリプトは `/path/to/llamacpp/restart-qwen.sh` にあります。
@@ -215,7 +217,7 @@ SVG原本（`art/whale-chan.svg`）はデザインの参照用に残していま
 
 ```
 art/whale-chan.svg          キャラクターの原本（SVG・参照用）
-art/sprites/*.webp          透過スプライト（idle / walk / think / sleep）
+art/sprites/*.webp          透過スプライト（idle / walk / think / sleep / nap / blink / work）
 src/client/sprites.js       上記から生成されるdata URL
 src/client/styles.css       オーバーレイ、状態アニメーション、吹き出し
 src/client/activity.js      Thinking 判定（DOM 非依存・テスト対象）

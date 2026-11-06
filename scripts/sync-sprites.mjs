@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const root = new URL('../', import.meta.url);
-const states = ['idle', 'think', 'sleep'];
+const states = ['idle', 'think', 'sleep', 'nap', 'work', 'blink'];
 const walk = ['walk-1', 'walk-2', 'walk-3', 'walk-4'];
 
 function dataUrl(name) {
@@ -14,6 +14,6 @@ function dataUrl(name) {
 
 const lines = states.map((name) => `  ${name}: ${JSON.stringify(dataUrl(name))}`);
 lines.push(`  walk: [\n${walk.map((name) => `    ${JSON.stringify(dataUrl(name))}`).join(',\n')},\n  ]`);
-const output = `/** Generated from art/sprites/*.webp by scripts/sync-sprites.mjs. */\nexport const SPRITES = {\n${lines.join(',\n')},\n};\nSPRITES.blink = SPRITES.sleep;\n`;
+const output = `/** Generated from art/sprites/*.webp by scripts/sync-sprites.mjs. */\nexport const SPRITES = {\n${lines.join(',\n')},\n};\n`;
 writeFileSync(new URL('src/client/sprites.js', root), output);
 console.log(`synced src/client/sprites.js (${(output.length / 1024).toFixed(0)} KiB)`);

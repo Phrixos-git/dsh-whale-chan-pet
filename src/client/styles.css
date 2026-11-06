@@ -499,3 +499,28 @@
     transition: none !important;
   }
 }
+
+/* Thinking mark (the think sprite reuses the idle pose). */
+.wc-pet.is-thinking .wc-sprite::after {
+  content: "?";
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  color: #bae6fd;
+  font: 800 22px/1 "Hiragino Sans", "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.9), 0 2px 4px rgba(2, 6, 23, 0.8);
+  transform: rotate(8deg);
+  animation: wc-think-float 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes wc-think-float {
+  0%, 100% { transform: translateY(0) rotate(8deg); }
+  50% { transform: translateY(-3px) rotate(12deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wc-pet.is-thinking .wc-sprite::after {
+    animation: none;
+  }
+}

@@ -40,6 +40,9 @@ if (initial === 'think') {
 } else if (initial === 'blink') {
   setActivity({ running: false, thinking: false });
   setTimeout(() => controller.previewBlink(), 250);
+} else if (initial === 'nap') {
+  setActivity({ running: false, thinking: false });
+  controller.forceMode('nap');
 }
 const previewSize = Number(params.get('size'));
 if (Number.isFinite(previewSize) && previewSize > 0) controller.setSettings({ size: previewSize });

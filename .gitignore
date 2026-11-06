@@ -15,6 +15,9 @@ art/sprites/*
 !art/sprites/walk-2.webp
 !art/sprites/walk-3.webp
 !art/sprites/walk-4.webp
+!art/sprites/nap.webp
+!art/sprites/work.webp
+!art/sprites/blink.webp
 !art/sprites/states-dark.png
 scripts/generate_*.py
 *.log
