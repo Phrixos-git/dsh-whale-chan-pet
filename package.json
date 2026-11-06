@@ -1,0 +1,51 @@
+{
+  "name": "dsh-whale-chan-pet",
+  "version": "0.2.0",
+  "description": "A tiny Whale-chan desktop pet for the DeepSeek Harness Web GUI: wanders, thinks with the model, and falls asleep during long reasoning.",
+  "type": "module",
+  "main": "lib/index.js",
+  "private": true,
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "art/whale-chan.svg",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "LICENSE-ART",
+    "art/sprites"
+  ],
+  "scripts": {
+    "art": "node scripts/sync-art.mjs",
+    "sprites": "node scripts/sync-sprites.mjs",
+    "build": "node scripts/sync-sprites.mjs && node scripts/build-client.mjs",
+    "preview": "node scripts/preview-server.mjs",
+    "test": "node --test"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-api-session-controller"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.5",
+    "react": "^18.2.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

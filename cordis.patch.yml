@@ -1,0 +1,5 @@
+# Whale-chan pet bundle patch.
+# Insert the client plugin row into the web composition.
+- insert:
+    - id: whale-chan-pet
+      name: 'dsh-whale-chan-pet'

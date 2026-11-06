@@ -1,0 +1,184 @@
+<!-- Original fan art for the DeepSeek Whale-chan community character. CC BY-NC-SA 4.0; see LICENSE-ART. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" width="240" height="300" role="img" aria-label="Whale-chan">
+  <defs>
+    <linearGradient id="wc-hairBack" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a9ecff"/>
+      <stop offset="0.45" stop-color="#4aa8ff"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="wc-hairFront" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#c8f6ff"/>
+      <stop offset="0.35" stop-color="#67c7ff"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="wc-tailGrad" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#8fe6ff"/>
+      <stop offset="0.5" stop-color="#3b9dff"/>
+      <stop offset="1" stop-color="#1e40af"/>
+    </linearGradient>
+    <linearGradient id="wc-eyeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#67e8f9"/>
+      <stop offset="0.55" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#0b1e5b"/>
+    </linearGradient>
+    <linearGradient id="wc-dressGrad" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#24324f"/>
+      <stop offset="1" stop-color="#0d1528"/>
+    </linearGradient>
+    <linearGradient id="wc-apronGrad" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dbe7f5"/>
+    </linearGradient>
+    <linearGradient id="wc-skinGrad" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0" stop-color="#fff4ea"/>
+      <stop offset="1" stop-color="#ffd9c6"/>
+    </linearGradient>
+    <radialGradient id="wc-cheekGrad" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff9db3" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#ff9db3" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="wc-soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <g class="wc-shadow">
+    <ellipse cx="120" cy="284" rx="50" ry="9" fill="#0b1e5b" opacity="0.18" filter="url(#wc-soft)"/>
+  </g>
+
+  <!-- Tail behind everything -->
+  <g class="wc-tail">
+    <path d="M98 228 C 72 240, 44 232, 30 210 C 22 196, 30 184, 40 185 C 50 186, 52 198, 62 206 C 74 216, 88 219, 102 214 Z"
+          fill="url(#wc-tailGrad)" stroke="#1e3a8a" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M40 185 C 26 176, 20 160, 30 151 C 38 144, 48 152, 48 164 C 48 172, 44 181, 40 185 Z"
+          fill="url(#wc-tailGrad)" stroke="#1e3a8a" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M40 185 C 30 194, 22 196, 17 188 C 13 180, 19 172, 27 174 C 33 176, 38 181, 40 185 Z"
+          fill="url(#wc-tailGrad)" stroke="#1e3a8a" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M44 190 C 36 186, 34 178, 40 174" fill="none" stroke="#bff3ff" stroke-width="2" opacity="0.55"/>
+  </g>
+
+  <!-- Hair behind the body -->
+  <g class="wc-hair-back">
+    <path d="M120 34 C 78 34, 56 70, 58 116 C 60 156, 53 196, 60 224 C 70 234, 88 232, 96 220 L 144 220 C 152 232, 170 234, 180 224 C 187 196, 180 156, 182 116 C 184 70, 162 34, 120 34 Z"
+          fill="url(#wc-hairBack)" stroke="#1e3a8a" stroke-width="2"/>
+    <path d="M70 120 C 66 160, 66 195, 72 216" fill="none" stroke="#bff3ff" stroke-width="2" opacity="0.35"/>
+    <path d="M170 120 C 174 160, 174 195, 168 216" fill="none" stroke="#bff3ff" stroke-width="2" opacity="0.35"/>
+  </g>
+
+  <!-- Body -->
+  <g class="wc-body">
+    <path d="M113 154 L127 154 L130 170 L110 170 Z" fill="url(#wc-skinGrad)"/>
+    <path d="M82 170 Q120 158 158 170 L174 232 Q120 250 66 232 Z" fill="url(#wc-dressGrad)" stroke="#0b1222" stroke-width="2"/>
+    <path d="M98 182 L142 182 L151 232 Q120 243 89 232 Z" fill="url(#wc-apronGrad)" stroke="#b9c8db" stroke-width="1.5"/>
+    <path d="M98 182 Q120 192 142 182" fill="none" stroke="#b9c8db" stroke-width="1.5"/>
+    <path d="M90 206 Q120 215 150 206" fill="none" stroke="#9fb3ca" stroke-width="1.2" opacity="0.8"/>
+    <path d="M92 202 Q120 211 148 202 L148 211 Q120 220 92 211 Z" fill="#2563eb" stroke="#1e3a8a" stroke-width="1.2"/>
+    <path d="M80 176 Q91 167 102 173 L97 191 Q85 192 80 176 Z" fill="#eaf6ff" stroke="#b9c8db" stroke-width="1.5"/>
+    <path d="M160 176 Q149 167 138 173 L143 191 Q155 192 160 176 Z" fill="#eaf6ff" stroke="#b9c8db" stroke-width="1.5"/>
+    <path d="M106 172 Q120 182 134 172 Q120 190 106 172 Z" fill="#f8fbff" stroke="#b9c8db" stroke-width="1.2"/>
+    <path d="M120 181 C 113 175, 107 177, 109 184 C 111 190, 117 187, 120 184 Z" fill="#2563eb" stroke="#1e3a8a" stroke-width="1"/>
+    <path d="M120 181 C 127 175, 133 177, 131 184 C 129 190, 123 187, 120 184 Z" fill="#2563eb" stroke="#1e3a8a" stroke-width="1"/>
+    <circle cx="120" cy="182" r="2.6" fill="#7dd3fc" stroke="#1e3a8a" stroke-width="0.8"/>
+    <path d="M120 186 L120 198" stroke="#1e3a8a" stroke-width="1.4"/>
+    <path d="M92 231 Q98 237 104 231 Q110 237 116 231 Q122 237 128 231 Q134 237 140 231 Q146 237 151 232" fill="none" stroke="#d6e3f0" stroke-width="2"/>
+    <path d="M120 214 C 115 208, 108 208, 108 213 C 108 218, 114 219, 120 217 C 126 219, 132 218, 132 213 C 132 208, 125 208, 120 214 Z" fill="#7dd3fc" opacity="0.95"/>
+    <ellipse cx="101" cy="238" rx="9" ry="6" fill="#ffe4d3" stroke="#e9b8a2" stroke-width="1.2"/>
+    <ellipse cx="139" cy="238" rx="9" ry="6" fill="#ffe4d3" stroke="#e9b8a2" stroke-width="1.2"/>
+    <path d="M93 240 L93 264 Q93 270 101 270 L105 270 Q111 270 111 264 L111 240 Z" fill="#fff7f0" stroke="#d9b9a7" stroke-width="1.2"/>
+    <path d="M129 240 L129 264 Q129 270 137 270 L141 270 Q147 270 147 264 L147 240 Z" fill="#fff7f0" stroke="#d9b9a7" stroke-width="1.2"/>
+    <path d="M91 266 Q91 274 101 274 L107 274 Q113 274 113 266 Z" fill="#17213a"/>
+    <path d="M127 266 Q127 274 137 274 L143 274 Q149 274 149 266 Z" fill="#17213a"/>
+    <g class="wc-arm-left">
+      <path d="M82 180 C 71 192, 67 208, 71 222 C 73 228, 81 228, 83 221 C 85 212, 87 198, 95 190 Z"
+            fill="url(#wc-skinGrad)" stroke="#e9b8a2" stroke-width="1.5"/>
+      <circle cx="76" cy="224" r="6" fill="url(#wc-skinGrad)" stroke="#e9b8a2" stroke-width="1.2"/>
+    </g>
+    <g class="wc-arm-right">
+      <path d="M158 180 C 169 192, 173 208, 169 222 C 167 228, 159 228, 157 221 C 155 212, 153 198, 145 190 Z"
+            fill="url(#wc-skinGrad)" stroke="#e9b8a2" stroke-width="1.5"/>
+      <circle cx="164" cy="224" r="6" fill="url(#wc-skinGrad)" stroke="#e9b8a2" stroke-width="1.2"/>
+    </g>
+    <g class="wc-think-arm" opacity="0">
+      <path d="M154 182 C 166 183, 172 194, 168 206 C 165 215, 151 216, 143 208 C 137 202, 135 191, 139 182 Z"
+            fill="url(#wc-skinGrad)" stroke="#e9b8a2" stroke-width="1.5"/>
+      <path d="M141 207 Q133 202 128 209 Q124 215 131 218 Q138 220 143 213 Z"
+            fill="url(#wc-skinGrad)" stroke="#e9b8a2" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <!-- Head -->
+  <g class="wc-head">
+    <path d="M66 108 C 54 100, 42 96, 30 96 L18 98 L27 112 C 36 124, 52 132, 64 126 Z"
+          fill="url(#wc-hairFront)" stroke="#1e3a8a" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M174 108 C 186 100, 198 96, 210 96 L222 98 L213 112 C 204 124, 188 132, 176 126 Z"
+          fill="url(#wc-hairFront)" stroke="#1e3a8a" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M62 110 C 52 104, 42 102, 32 103" fill="none" stroke="#bff3ff" stroke-width="2" opacity="0.7"/>
+    <path d="M178 110 C 188 104, 198 102, 208 103" fill="none" stroke="#bff3ff" stroke-width="2" opacity="0.7"/>
+    <ellipse cx="120" cy="112" rx="46" ry="52" fill="url(#wc-skinGrad)"/>
+    <ellipse cx="120" cy="112" rx="46" ry="52" fill="none" stroke="#efc3ae" stroke-width="1.2" opacity="0.6"/>
+    <path d="M75 94 C 75 57, 97 41, 120 41 C 143 41, 165 57, 165 94 C 149 79, 138 76, 120 76 C 102 76, 91 79, 75 94 Z"
+          fill="url(#wc-hairFront)" stroke="#1e3a8a" stroke-width="1.5"/>
+    <path d="M78 96 C 81 76, 93 62, 109 57 C 105 74, 100 86, 95 98 Z" fill="url(#wc-hairFront)" stroke="#1e3a8a" stroke-width="1.2"/>
+    <path d="M102 58 C 110 73, 115 86, 118 99 C 122 86, 128 72, 136 58 Z" fill="url(#wc-hairFront)" stroke="#1e3a8a" stroke-width="1.2"/>
+    <path d="M129 58 C 141 64, 152 76, 157 94 C 149 89, 142 94, 136 101 Z" fill="url(#wc-hairFront)" stroke="#1e3a8a" stroke-width="1.2"/>
+    <path d="M68 100 C 64 124, 64 148, 71 166 L 81 162 C 76 144, 76 122, 78 104 Z" fill="url(#wc-hairFront)" stroke="#1e3a8a" stroke-width="1.2"/>
+    <path d="M172 100 C 176 124, 176 148, 169 166 L 159 162 C 164 144, 164 122, 162 104 Z" fill="url(#wc-hairFront)" stroke="#1e3a8a" stroke-width="1.2"/>
+    <path d="M111 45 C 109 31, 116 20, 128 18 C 137 16, 143 22, 142 29 C 141 35, 134 37, 131 32 C 128 27, 133 24, 136 27"
+          fill="none" stroke="#2b6df0" stroke-width="6" stroke-linecap="round"/>
+    <path d="M111 45 C 109 31, 116 20, 128 18 C 137 16, 143 22, 142 29 C 141 35, 134 37, 131 32 C 128 27, 133 24, 136 27"
+          fill="none" stroke="#a9ecff" stroke-width="2.5" stroke-linecap="round"/>
+    <g class="wc-headdress">
+      <path d="M76 71 Q120 40 164 71 L164 81 Q149 74 134 81 Q120 74 106 81 Q91 74 76 81 Z"
+            fill="#f8fbff" stroke="#b9c8db" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M84 79 Q91 86 99 82 Q106 88 114 84 Q120 90 126 84 Q134 88 141 82 Q149 86 156 79"
+            fill="none" stroke="#d6e3f0" stroke-width="2"/>
+      <path d="M120 68 C 110 60, 102 62, 104 70 C 106 77, 115 75, 120 71 Z" fill="#2563eb" stroke="#1e3a8a" stroke-width="1.2"/>
+      <path d="M120 68 C 130 60, 138 62, 136 70 C 134 77, 125 75, 120 71 Z" fill="#2563eb" stroke="#1e3a8a" stroke-width="1.2"/>
+      <circle cx="120" cy="70" r="3.2" fill="#7dd3fc" stroke="#1e3a8a" stroke-width="1"/>
+    </g>
+    <g class="wc-eyes">
+      <ellipse cx="99" cy="118" rx="14" ry="18" fill="#ffffff"/>
+      <ellipse cx="141" cy="118" rx="14" ry="18" fill="#ffffff"/>
+      <ellipse cx="99" cy="120" rx="9.8" ry="14" fill="url(#wc-eyeGrad)"/>
+      <ellipse cx="141" cy="120" rx="9.8" ry="14" fill="url(#wc-eyeGrad)"/>
+      <ellipse cx="99" cy="124" rx="5.6" ry="8.4" fill="#0b1e5b"/>
+      <ellipse cx="141" cy="124" rx="5.6" ry="8.4" fill="#0b1e5b"/>
+      <circle cx="95" cy="113" r="4" fill="#ffffff"/>
+      <circle cx="137" cy="113" r="4" fill="#ffffff"/>
+      <circle cx="103" cy="128" r="1.9" fill="#bff3ff" opacity="0.9"/>
+      <circle cx="145" cy="128" r="1.9" fill="#bff3ff" opacity="0.9"/>
+      <path d="M85 107 Q99 96 113 107" fill="none" stroke="#1e3a8a" stroke-width="3" stroke-linecap="round"/>
+      <path d="M127 107 Q141 96 155 107" fill="none" stroke="#1e3a8a" stroke-width="3" stroke-linecap="round"/>
+      <path d="M87 101 Q99 94 111 100" fill="none" stroke="#2563eb" stroke-width="1.3" stroke-linecap="round" opacity="0.7"/>
+      <path d="M129 100 Q141 94 153 101" fill="none" stroke="#2563eb" stroke-width="1.3" stroke-linecap="round" opacity="0.7"/>
+    </g>
+    <g class="wc-eyes-sleep" opacity="0">
+      <path d="M85 119 Q99 128 113 119" fill="none" stroke="#1e3a8a" stroke-width="3" stroke-linecap="round"/>
+      <path d="M127 119 Q141 128 155 119" fill="none" stroke="#1e3a8a" stroke-width="3" stroke-linecap="round"/>
+      <path d="M85 111 Q99 106 113 111" fill="none" stroke="#2563eb" stroke-width="1.7" stroke-linecap="round" opacity="0.7"/>
+      <path d="M127 111 Q141 106 155 111" fill="none" stroke="#2563eb" stroke-width="1.7" stroke-linecap="round" opacity="0.7"/>
+    </g>
+    <ellipse cx="78" cy="136" rx="11" ry="6.5" fill="url(#wc-cheekGrad)"/>
+    <ellipse cx="162" cy="136" rx="11" ry="6.5" fill="url(#wc-cheekGrad)"/>
+    <path d="M114 143 Q120 148 126 143" fill="none" stroke="#c96b74" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M118 147 Q120 150 122 147" fill="none" stroke="#c96b74" stroke-width="1.3" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <!-- Effects, hidden unless a state class turns them on -->
+  <g class="wc-think-mark" opacity="0">
+    <path d="M188 58 Q188 42 202 42 Q216 42 216 56 Q216 66 207 68 L207 74" fill="none" stroke="#2563eb" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="207" cy="82" r="3" fill="#2563eb"/>
+    <circle cx="176" cy="76" r="2.8" fill="#7dd3fc"/>
+    <circle cx="181" cy="66" r="1.8" fill="#7dd3fc"/>
+  </g>
+
+  <g class="wc-zzz" opacity="0" fill="#2563eb" font-family="ui-rounded, 'Hiragino Maru Gothic ProN', 'M PLUS Rounded 1c', sans-serif" font-weight="800">
+    <text x="180" y="65" font-size="24">Z</text>
+    <text x="195" y="48" font-size="18">z</text>
+    <text x="206" y="36" font-size="13">z</text>
+  </g>
+
+  <g class="wc-heart" opacity="0" fill="#ff7aa2">
+    <path d="M198 96 C 190 86, 178 94, 184 106 C 188 114, 198 121, 198 121 C 198 121, 208 114, 212 106 C 218 94, 206 86, 198 96 Z"/>
+  </g>
+</svg>

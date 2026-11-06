@@ -1,0 +1,32 @@
+Whale-chan original SVG character art
+=====================================
+
+`art/whale-chan.svg` and `art/sprites/*.webp` are original fan artwork created
+for this plugin. They follow the visual specification of the community
+DeepSeek Whale-chan project, but do not copy or redistribute that project's
+reference images. The sprite images were generated with Animagine XL 4.0
+(CreativeML Open RAIL++-M) and cut out with BiRefNet (MIT).
+
+Character concept and specification:
+- DeepSeek Whale-chan (深度求索 鲸鱼娘), community project:
+  https://github.com/Neko3000/deepseek-whalechan
+- Original character credits named by that project:
+  ZipZipPipe (https://space.bilibili.com/4168597)
+  上善无形 (https://space.bilibili.com/4456176)
+
+License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+International (CC BY-NC-SA 4.0)
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+You may share and adapt the art for non-commercial purposes, provided you:
+- credit "DeepSeek Whale-chan" and the original creators above,
+- link to this repository and the CC BY-NC-SA 4.0 license,
+- indicate any changes,
+- distribute adaptations under the same license.
+
+This is unofficial fan art. It is not affiliated with, endorsed by, or
+sponsored by DeepSeek. "DeepSeek" and related marks belong to their owners.
+Commercial use requires permission from the relevant rights holders.
+
+The plugin's source code is separately licensed under the MIT License; see
+`LICENSE`.

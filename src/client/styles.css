@@ -1,0 +1,501 @@
+/* Whale-chan pet — frame overlay, sprite states, and speech bubble. */
+
+.wc-layer {
+  --wc-size: 210px;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wc-pet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--wc-size);
+  height: var(--wc-size);
+  pointer-events: none;
+  will-change: transform;
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+}
+
+.wc-pet.is-ready {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.wc-pet.is-walking {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.wc-pet.is-dragging {
+  transition: none !important;
+}
+
+.wc-flip {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+}
+
+.wc-sprite {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  transform-origin: 50% 100%;
+  animation: wc-bob 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 7px 10px rgba(10, 30, 80, 0.16));
+}
+
+.wc-sprite:active {
+  cursor: grabbing;
+}
+
+.wc-sprite-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: auto;
+}
+
+.wc-pet.is-walking .wc-sprite {
+  animation: wc-walk-bob 0.48s ease-in-out infinite;
+}
+
+.wc-pet.is-working .wc-sprite {
+  animation: wc-work-bob 2.2s ease-in-out infinite;
+}
+
+.wc-pet.is-sleeping .wc-sprite {
+  animation: wc-breathe 3.6s ease-in-out infinite;
+}
+
+/* The pose is carried by the raster sprite; these are the small state overlays. */
+.wc-zzz {
+  position: absolute;
+  top: 4%;
+  left: 2%;
+  z-index: 2;
+  color: #7dd3fc;
+  font: 800 18px/1 ui-rounded, "Hiragino Maru Gothic ProN", "M PLUS Rounded 1c", sans-serif;
+  text-shadow: 0 2px 6px rgba(2, 6, 23, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+.wc-pet.is-sleeping .wc-zzz {
+  opacity: 1;
+  animation: wc-zzz-float 2.8s ease-in-out infinite;
+}
+
+.wc-heart {
+  position: absolute;
+  top: 17%;
+  right: 3%;
+  z-index: 2;
+  color: #ff7aa2;
+  font-size: 22px;
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(2, 6, 23, 0.5);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wc-pet.is-happy .wc-heart {
+  opacity: 1;
+  animation: wc-heart-pop 1s ease-out;
+}
+
+/* Speech bubble. */
+.wc-bubble {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - 14px);
+  z-index: 2;
+  max-width: 190px;
+  padding: 7px 10px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.14);
+  color: #1e3a8a;
+  font-family: var(--ds-font-family-ui, "Hiragino Maru Gothic ProN", "M PLUS Rounded 1c", ui-rounded, ui-sans-serif, system-ui, sans-serif);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.wc-bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid rgba(37, 99, 235, 0.2);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+  background: inherit;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.wc-bubble.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.wc-pet.is-bubble-below .wc-bubble {
+  top: calc(100% - 14px);
+  bottom: auto;
+  transform: translate(-50%, -6px);
+}
+
+.wc-pet.is-bubble-below .wc-bubble::after {
+  top: -5px;
+  bottom: auto;
+  border: 0;
+  border-left: 1px solid rgba(37, 99, 235, 0.2);
+  border-top: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.wc-pet.is-bubble-below .wc-bubble.is-visible {
+  transform: translate(-50%, 0);
+}
+
+@keyframes wc-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes wc-walk-bob {
+  0%, 100% { transform: translateY(0) rotate(-0.5deg); }
+  50% { transform: translateY(-2px) rotate(0.5deg); }
+}
+
+@keyframes wc-work-bob {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-2px) rotate(-1deg); }
+}
+
+@keyframes wc-breathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(1px) scale(1.012); }
+}
+
+@keyframes wc-think-float {
+  0%, 100% { transform: translateY(0); opacity: 0.85; }
+  50% { transform: translateY(-4px); opacity: 1; }
+}
+
+@keyframes wc-zzz-float {
+  0% { transform: translateY(0); opacity: 0.15; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-9px); opacity: 0; }
+}
+
+@keyframes wc-heart-pop {
+  0% { opacity: 0; transform: scale(0.8); }
+  35% { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 0; transform: translateY(-10px) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wc-pet,
+  .wc-sprite,
+  .wc-pet.is-walking .wc-sprite,
+  .wc-pet.is-working .wc-sprite,
+  .wc-pet.is-sleeping .wc-sprite,
+  .wc-zzz,
+  .wc-heart {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Hide / summon controls. */
+.wc-hide {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.82);
+  color: #dbeafe;
+  font: 700 14px/1 ui-sans-serif, system-ui, sans-serif;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(2px);
+  transition: opacity 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.wc-pet:hover .wc-hide,
+.wc-pet.force-hide .wc-hide,
+.wc-flip:hover ~ .wc-hide,
+.wc-hide:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.wc-hide:hover {
+  background: rgba(37, 99, 235, 0.92);
+}
+
+.wc-hide:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 2px;
+}
+
+.wc-summon {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid rgba(125, 211, 252, 0.45);
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e0f2fe;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(2, 6, 23, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px) scale(0.92);
+  transition: opacity 0.18s ease, transform 0.18s ease, background 0.18s ease;
+}
+
+.wc-summon.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.wc-summon:hover {
+  background: rgba(37, 99, 235, 0.92);
+}
+
+.wc-summon:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 2px;
+}
+
+@media (hover: none) {
+  .wc-hide {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wc-hide,
+  .wc-summon {
+    transition: none !important;
+  }
+}
+
+/* Settings panel. */
+.wc-settings-toggle {
+  position: absolute;
+  top: -2px;
+  right: 24px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.82);
+  color: #dbeafe;
+  font: 700 13px/1 ui-sans-serif, system-ui, sans-serif;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(2px);
+  transition: opacity 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.wc-pet:hover .wc-settings-toggle,
+.wc-settings-toggle:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.wc-settings-toggle:hover {
+  background: rgba(37, 99, 235, 0.92);
+}
+
+.wc-settings-toggle:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 2px;
+}
+
+.wc-settings-panel {
+  position: absolute;
+  right: calc(var(--wc-size) + 40px);
+  bottom: 24px;
+  z-index: 6;
+  width: 268px;
+  max-height: calc(100% - 140px);
+  padding: 14px;
+  overflow: auto;
+  border: 1px solid rgba(125, 211, 252, 0.3);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.97);
+  box-shadow: 0 18px 48px rgba(2, 6, 23, 0.55);
+  color: #e2e8f0;
+  font-family: var(--ds-font-family-ui, "Hiragino Sans", "Noto Sans JP", ui-sans-serif, system-ui, sans-serif);
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  backdrop-filter: blur(14px);
+}
+
+.wc-settings-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+.wc-settings-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.wc-settings-head strong {
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.wc-settings-close {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 50%;
+  background: rgba(30, 41, 59, 0.8);
+  color: #cbd5e1;
+  font: 700 14px/1 ui-sans-serif, system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.wc-settings-close:hover {
+  background: rgba(37, 99, 235, 0.9);
+  color: #fff;
+}
+
+.wc-setting {
+  display: grid;
+  gap: 4px;
+  margin-top: 11px;
+}
+
+.wc-setting > span {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  color: #cbd5e1;
+}
+
+.wc-setting b {
+  color: #7dd3fc;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.wc-setting input[type="range"] {
+  width: 100%;
+  margin: 0;
+  accent-color: #3b82f6;
+  cursor: pointer;
+}
+
+.wc-settings-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.wc-settings-actions button {
+  flex: 1;
+  padding: 7px 8px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 8px;
+  background: rgba(30, 41, 59, 0.85);
+  color: #dbeafe;
+  font: inherit;
+  cursor: pointer;
+}
+
+.wc-settings-actions button:hover {
+  background: rgba(37, 99, 235, 0.85);
+  color: #fff;
+}
+
+.wc-settings-hint {
+  margin: 9px 0 0;
+  color: #64748b;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+@media (hover: none) {
+  .wc-settings-toggle {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .wc-settings-panel {
+    right: 16px;
+    bottom: 80px;
+    width: calc(100vw - 32px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wc-settings-toggle,
+  .wc-settings-panel {
+    transition: none !important;
+  }
+}
