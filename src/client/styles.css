@@ -360,12 +360,13 @@
 }
 
 .wc-settings-panel {
-  position: absolute;
-  right: calc(var(--wc-size) + 40px);
-  bottom: 24px;
+  position: fixed;
+  top: 76px;
+  right: 24px;
+  bottom: auto;
   z-index: 6;
   width: 268px;
-  max-height: calc(100% - 140px);
+  max-height: calc(100vh - 100px);
   padding: 14px;
   overflow: auto;
   border: 1px solid rgba(125, 211, 252, 0.3);
@@ -487,9 +488,12 @@
 
 @media (max-width: 520px) {
   .wc-settings-panel {
+    top: auto;
     right: 16px;
     bottom: 80px;
-    width: calc(100vw - 32px);
+    left: 16px;
+    width: auto;
+    max-height: calc(100vh - 160px);
   }
 }
 
